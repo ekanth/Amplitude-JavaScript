@@ -12,6 +12,9 @@ var Request = function (url, data, headers) {
 
 function setHeaders(xhr, headers) {
   for (const header in headers) {
+    if (header === 'Cross-Origin-Resource-Policy' && headers[header] === '') {
+      continue;
+    }
     xhr.setRequestHeader(header, headers[header]);
   }
 }
